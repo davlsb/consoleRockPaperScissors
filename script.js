@@ -69,7 +69,6 @@ function playRound(playerSelection, computerSelection) {
         //track who won
         if (currResult.startsWith("You Won")) userScore += 1;
         else if(currResult.startsWith("You Lose")) compScore += 1;
-        console.log(userScore, compScore);
     }
 
     console.log(userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!");

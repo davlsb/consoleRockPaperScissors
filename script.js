@@ -29,17 +29,17 @@ function playRound(playerSelection, computerSelection) {
         case "ROCK":
             if(computerSelection === "ROCK") return "You tied! Both chose Rock.";
             else if(computerSelection === "PAPER") return "You Lose! Paper beats rock.";
-            else return "You won! Rock beats Scissors.";
+            else return "You Won! Rock beats Scissors.";
             break;
         case "PAPER":
             if(computerSelection === "PAPER") return "You tied! Both chose Paper.";
             else if(computerSelection === "SCISSORS") return "You Lose! Scissors beats paper.";
-            else return "You won! Paper beats Rock.";
+            else return "You Won! Paper beats Rock.";
             break;
         case "SCISSORS":
             if(computerSelection === "SCISSORS") return "You tied! Both chose Scissors.";
             else if(computerSelection === "ROCK") return "You Lose! Rock beats Scissors.";
-            else return "You won! Scissors beats Paper.";
+            else return "You Won! Scissors beats Paper.";
             break;
     }
 
@@ -47,17 +47,32 @@ function playRound(playerSelection, computerSelection) {
   }
 
   function playGame(){
+
+    //create userScore
+    let userScore = 0;
+    //create computerScore 
+    let compScore = 0;
     //loop 5 times
     //ask user for choice using prompt
     //verify it's one of the choices
     //log the answer
     for(let i = 0; i < 5; i++){
-        let userChoice = prompt(`Alright! round ${i}. Choose Rock, Paper, Scissors, and shoot!`);
+        let userChoice = prompt(`Alright! round ${i+1}. Choose Rock, Paper, Scissors, and shoot!`);
         //verify it can be used, else keep asking for another input
         while(!(userChoice.toUpperCase() === "ROCK" || userChoice.toUpperCase() === "PAPER" || userChoice.toUpperCase() === "SCISSORS"))
-            userChoice = prompt(`Still on round ${i}. Choose Rock, Paper, Scissors, nothing else!`);
-        console.log(playRound(userChoice, getComputerChoice()));
+            userChoice = prompt(`Still on round ${i+1}. Choose Rock, Paper, Scissors, nothing else!`);
+
+        //save result of round
+        let currResult = playRound(userChoice, getComputerChoice());
+        //log the result in console
+        console.log(currResult);
+        //track who won
+        if (currResult.startsWith("You Won")) userScore += 1;
+        else if(currResult.startsWith("You Lose")) compScore += 1;
+        console.log(userScore, compScore);
     }
+
+    console.log(userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!");
   }
 
   playGame();

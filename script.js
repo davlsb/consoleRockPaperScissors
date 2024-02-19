@@ -45,3 +45,19 @@ function playRound(playerSelection, computerSelection) {
 
     return "Error";
   }
+
+  function playGame(){
+    //loop 5 times
+    //ask user for choice using prompt
+    //verify it's one of the choices
+    //log the answer
+    for(let i = 0; i < 5; i++){
+        let userChoice = prompt(`Alright! round ${i}. Choose Rock, Paper, Scissors, and shoot!`);
+        //verify it can be used, else keep asking for another input
+        while(!(userChoice.toUpperCase() === "ROCK" || userChoice.toUpperCase() === "PAPER" || userChoice.toUpperCase() === "SCISSORS"))
+            userChoice = prompt(`Still on round ${i}. Choose Rock, Paper, Scissors, nothing else!`);
+        console.log(playRound(userChoice, getComputerChoice()));
+    }
+  }
+
+  playGame();

@@ -56,20 +56,37 @@ function playRound(playerSelection, computerSelection) {
     //ask user for choice using prompt
     //verify it's one of the choices
     //log the answer
-    for(let i = 0; i < 5; i++){
-        let userChoice = prompt(`Alright! round ${i+1}. Choose Rock, Paper, Scissors, and shoot!`);
-        //verify it can be used, else keep asking for another input
-        while(!(userChoice.toUpperCase() === "ROCK" || userChoice.toUpperCase() === "PAPER" || userChoice.toUpperCase() === "SCISSORS"))
-            userChoice = prompt(`Still on round ${i+1}. Choose Rock, Paper, Scissors, nothing else!`);
 
-        //save result of round
-        let currResult = playRound(userChoice, getComputerChoice());
-        //log the result in console
-        console.log(currResult);
-        //track who won
-        if (currResult.startsWith("You Won")) userScore += 1;
-        else if(currResult.startsWith("You Lose")) compScore += 1;
-    }
+    const buttonPara = document.querySelector(".loadButtons");
+    
+    const rockBtn = document.createElement('button');
+    rockBtn.innerHTML = "choose rock";
+
+    const paperBtn = document.createElement('button');
+    paperBtn.innerHTML = "choose paper";
+
+    const scissorsBtn = document.createElement('button');
+    scissorsBtn.innerHTML = "choose scissors";
+
+    buttonPara.appendChild(rockBtn);
+    buttonPara.appendChild(paperBtn);
+    buttonPara.appendChild(scissorsBtn);
+
+
+    /*
+    let userChoice = prompt(`Alright! round ${i+1}. Choose Rock, Paper, Scissors, and shoot!`);
+    //verify it can be used, else keep asking for another input
+    while(!(userChoice.toUpperCase() === "ROCK" || userChoice.toUpperCase() === "PAPER" || userChoice.toUpperCase() === "SCISSORS"))
+        userChoice = prompt(`Still on round ${i+1}. Choose Rock, Paper, Scissors, nothing else!`);
+
+    //save result of round
+    let currResult = playRound(userChoice, getComputerChoice());
+    //log the result in console
+    console.log(currResult);
+    //track who won
+    if (currResult.startsWith("You Won")) userScore += 1;
+    else if(currResult.startsWith("You Lose")) compScore += 1;
+    */
 
     console.log(userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!");
   }

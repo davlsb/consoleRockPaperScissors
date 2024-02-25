@@ -58,20 +58,34 @@ function playRound(playerSelection, computerSelection) {
     //log the answer
 
     const buttonPara = document.querySelector(".loadButtons");
+    const currentResults = document.querySelector("#currentResults");
     
     const rockBtn = document.createElement('button');
-    rockBtn.innerHTML = "choose rock";
+    rockBtn.innerHTML = "Rock";
 
     const paperBtn = document.createElement('button');
-    paperBtn.innerHTML = "choose paper";
+    paperBtn.innerHTML = "Paper";
 
     const scissorsBtn = document.createElement('button');
-    scissorsBtn.innerHTML = "choose scissors";
+    scissorsBtn.innerHTML = "Scissors";
 
     buttonPara.appendChild(rockBtn);
     buttonPara.appendChild(paperBtn);
     buttonPara.appendChild(scissorsBtn);
 
+    buttonPara.addEventListener('click', event => {
+        let userChoice = event.target.innerHTML.toUpperCase();
+        console.log(userChoice);
+
+        let currResult = playRound(userChoice, getComputerChoice());
+        console.log(currResult);
+
+        if (currResult.startsWith("You Won")) userScore += 1;
+        else if(currResult.startsWith("You Lose")) compScore += 1;
+
+        console.log(userScore + "vs" + compScore);
+        currentResults.innerHTML = `${currResult} \n User score: ${userScore} vs Computer score: ${compScore}`;
+    })
 
     /*
     let userChoice = prompt(`Alright! round ${i+1}. Choose Rock, Paper, Scissors, and shoot!`);

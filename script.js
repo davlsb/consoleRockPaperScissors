@@ -85,24 +85,12 @@ function playRound(playerSelection, computerSelection) {
 
         console.log(userScore + "vs" + compScore);
         currentResults.innerHTML = `${currResult} \n User score: ${userScore} vs Computer score: ${compScore}`;
+
+        if(userScore >= 5 || compScore >= 5){
+            currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
+        }
     })
 
-    /*
-    let userChoice = prompt(`Alright! round ${i+1}. Choose Rock, Paper, Scissors, and shoot!`);
-    //verify it can be used, else keep asking for another input
-    while(!(userChoice.toUpperCase() === "ROCK" || userChoice.toUpperCase() === "PAPER" || userChoice.toUpperCase() === "SCISSORS"))
-        userChoice = prompt(`Still on round ${i+1}. Choose Rock, Paper, Scissors, nothing else!`);
-
-    //save result of round
-    let currResult = playRound(userChoice, getComputerChoice());
-    //log the result in console
-    console.log(currResult);
-    //track who won
-    if (currResult.startsWith("You Won")) userScore += 1;
-    else if(currResult.startsWith("You Lose")) compScore += 1;
-    */
-
-    console.log(userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!");
   }
 
   playGame();

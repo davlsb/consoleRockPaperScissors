@@ -60,18 +60,9 @@ function playRound(playerSelection, computerSelection) {
     const buttonPara = document.querySelector(".loadButtons");
     const currentResults = document.querySelector("#currentResults");
     
-    const rockBtn = document.createElement('button');
-    rockBtn.innerHTML = "Rock";
-
-    const paperBtn = document.createElement('button');
-    paperBtn.innerHTML = "Paper";
-
-    const scissorsBtn = document.createElement('button');
-    scissorsBtn.innerHTML = "Scissors";
-
-    buttonPara.appendChild(rockBtn);
-    buttonPara.appendChild(paperBtn);
-    buttonPara.appendChild(scissorsBtn);
+    const rockBtn = document.querySelector("#rock");
+    const paperBtn = document.querySelector("#paper");
+    const scissorsBtn = document.querySelector("#scissors");
 
     buttonPara.addEventListener('click', event => {
         let userChoice = event.target.innerHTML.toUpperCase();
@@ -88,6 +79,7 @@ function playRound(playerSelection, computerSelection) {
 
         if(userScore >= 5 || compScore >= 5){
             currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
+            buttonPara.style.display = hidden;
         }
     })
 

@@ -63,6 +63,9 @@ function playRound(playerSelection, computerSelection) {
     const rockBtn = document.querySelector("#rock");
     const paperBtn = document.querySelector("#paper");
     const scissorsBtn = document.querySelector("#scissors");
+    const resetBtn = document.querySelector("#reset");
+
+    resetBtn.style.visibility = "hidden";
 
     buttonPara.addEventListener('click', event => {
         let userChoice = event.target.innerHTML.toUpperCase();
@@ -79,7 +82,12 @@ function playRound(playerSelection, computerSelection) {
 
         if(userScore >= 5 || compScore >= 5){
             currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
-            buttonPara.style.display = hidden;
+            resetBtn.style.visibility = "visible";
+        }
+
+        if(userChoice === "Start Over!"){
+            userScore = 0;
+            compScore =0;
         }
     })
 

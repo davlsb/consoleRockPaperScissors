@@ -16,9 +16,16 @@ header{
     flex-direction: column;
 }
 
+main {
+    align-self: center;
+    width: 70%;
+    text-align: center;
+}
+
 .loadButtons {
     display: flex;
     justify-content: space-evenly;
+    margin: 50px 0px;
 }
 
 .aChoice{

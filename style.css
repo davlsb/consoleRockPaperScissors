@@ -21,8 +21,12 @@ header{
     justify-content: space-evenly;
 }
 
-.aChoice {
+.aChoice{
     flex-basis: 100px;
     aspect-ratio: 1 / 1 ;
     border-radius: 16px;
+}
+
+.aChoice img {
+    height: 100px;
 }

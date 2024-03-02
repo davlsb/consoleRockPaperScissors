@@ -65,8 +65,8 @@ function playRound(playerSelection, computerSelection) {
     resetBtn.style.display = "none";
 
     buttonPara.addEventListener('click', event => {
-        if (event.target.tagName.toLowerCase() === 'button') {
-            let userChoice = event.target.innerHTML.toUpperCase();
+        if (event.target.tagName.toLowerCase() === 'img') {
+            let userChoice = event.target.getAttribute("alt").toUpperCase();
             console.log(userChoice);
 
             if(userChoice !== "START OVER!"){

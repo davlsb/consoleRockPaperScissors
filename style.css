@@ -20,3 +20,9 @@ header{
     display: flex;
     justify-content: space-evenly;
 }
+
+.aChoice {
+    flex-basis: 100px;
+    aspect-ratio: 1 / 1 ;
+    border-radius: 16px;
+}

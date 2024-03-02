@@ -15,3 +15,8 @@ header{
     flex-wrap: nowrap;
     flex-direction: column;
 }
+
+.loadButtons {
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -1,19 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap');
+
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-color: black;
+    color: white;
+    font-family: "Frank Ruhl Libre", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: larger;
 }
 
 header{
     height: 50px;
-    background-color: aliceblue;
-    color: black;
+    background: linear-gradient(207deg, hsl(200.43deg 79.86% 61.75%) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 80%);
+    color: white;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: column;
+    padding: 10px;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
 }
 
 main {
@@ -32,6 +46,7 @@ main {
     flex-basis: 100px;
     aspect-ratio: 1 / 1 ;
     border-radius: 16px;
+    background-color: #594158;
 }
 
 .aChoice img {

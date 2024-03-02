@@ -30,17 +30,14 @@ function playRound(playerSelection, computerSelection) {
             if(computerSelection === "ROCK") return "You tied! Both chose Rock.";
             else if(computerSelection === "PAPER") return "You Lose! Paper beats rock.";
             else return "You Won! Rock beats Scissors.";
-            break;
         case "PAPER":
             if(computerSelection === "PAPER") return "You tied! Both chose Paper.";
             else if(computerSelection === "SCISSORS") return "You Lose! Scissors beats paper.";
             else return "You Won! Paper beats Rock.";
-            break;
         case "SCISSORS":
             if(computerSelection === "SCISSORS") return "You tied! Both chose Scissors.";
             else if(computerSelection === "ROCK") return "You Lose! Rock beats Scissors.";
             else return "You Won! Scissors beats Paper.";
-            break;
     }
 
     return "Error";
@@ -65,29 +62,40 @@ function playRound(playerSelection, computerSelection) {
     const scissorsBtn = document.querySelector("#scissors");
     const resetBtn = document.querySelector("#reset");
 
-    resetBtn.style.visibility = "hidden";
+    resetBtn.style.display = "none";
 
     buttonPara.addEventListener('click', event => {
-        let userChoice = event.target.innerHTML.toUpperCase();
-        console.log(userChoice);
+        if (event.target.tagName.toLowerCase() === 'button') {
+            let userChoice = event.target.innerHTML.toUpperCase();
+            console.log(userChoice);
 
-        let currResult = playRound(userChoice, getComputerChoice());
-        console.log(currResult);
+            if(userChoice !== "START OVER!"){
+            
+                let currResult = playRound(userChoice, getComputerChoice());
+                console.log(currResult);
 
-        if (currResult.startsWith("You Won")) userScore += 1;
-        else if(currResult.startsWith("You Lose")) compScore += 1;
+                if (currResult.startsWith("You Won")) userScore += 1;
+                else if(currResult.startsWith("You Lose")) compScore += 1;
 
-        console.log(userScore + "vs" + compScore);
-        currentResults.innerHTML = `${currResult} \n User score: ${userScore} vs Computer score: ${compScore}`;
+                console.log(userScore + "vs" + compScore);
+                currentResults.innerHTML = `${currResult} \n User score: ${userScore} vs Computer score: ${compScore}`;
 
-        if(userScore >= 5 || compScore >= 5){
-            currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
-            resetBtn.style.visibility = "visible";
-        }
-
-        if(userChoice === "Start Over!"){
-            userScore = 0;
-            compScore =0;
+                if(userScore >= 5 || compScore >= 5){
+                    currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
+                    resetBtn.style.display = "block";
+                    scissorsBtn.style.display = "none";
+                    paperBtn.style.display = "none";
+                    rockBtn.style.display = "none";
+                }
+            } else {
+                userScore = 0;
+                compScore = 0;
+                resetBtn.style.display = "none";
+                scissorsBtn.style.display = "block";
+                paperBtn.style.display = "block";
+                rockBtn.style.display = "block";
+                currentResults.innerHTML = "";
+            }
         }
     })
 

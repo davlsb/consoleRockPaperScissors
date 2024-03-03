@@ -56,6 +56,9 @@ function playRound(playerSelection, computerSelection) {
 
     const buttonPara = document.querySelector(".loadButtons");
     const currentResults = document.querySelector("#currentResults");
+    const progress = document.querySelector("#progress");
+    const user = document.querySelector("#user");
+    const computer = document.querySelector("#computer");
     
     const rockBtn = document.querySelector("#rock");
     const paperBtn = document.querySelector("#paper");
@@ -78,10 +81,12 @@ function playRound(playerSelection, computerSelection) {
                 else if(currResult.startsWith("You Lose")) compScore += 1;
 
                 console.log(userScore + "vs" + compScore);
-                currentResults.innerHTML = `${currResult} \n User score: ${userScore} vs Computer score: ${compScore}`;
+                progress.innerHTML = `${currResult}`;
+                user.innerHTML = `User score: ${userScore}`;
+                computer.innerHTML = `Computer score: ${compScore}`
 
                 if(userScore >= 5 || compScore >= 5){
-                    currentResults.innerHTML = userScore > compScore ? "You won! Computer lost." : userScore < compScore ? "Computer won. You lost." : "It's a tie!";
+                    currentResults.innerHTML = userScore > compScore ? "You won the game! Computer lost." : userScore < compScore ? "Computer won the game. You lost." : "It's a tie!";
                     resetBtn.style.display = "block";
                     scissorsBtn.style.display = "none";
                     paperBtn.style.display = "none";
